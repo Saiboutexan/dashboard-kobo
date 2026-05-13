@@ -1,4 +1,4 @@
-const FORM_URL = "https://kf.kobotoolbox.org/api/v2/assets/aMfrC6SQo5rdpVJfyBwgcC/data/?format=json";
+const FORM_URL = "https://script.google.com/macros/s/AKfycbz3lkNVJ6xH7zDF_KAsJYX8CrefCclX4tp7cLkgJTBlOVxMrqwnt7Xg_m56I6rXu0Pk8A/exec";
 
 async function chargerDonnees() {
 
@@ -6,16 +6,16 @@ async function chargerDonnees() {
 
     const response = await fetch(FORM_URL);
 
-    console.log(response);
-
     const data = await response.json();
 
     console.log(data);
 
     const results = data.results || [];
 
+    // Total
     document.getElementById("total").innerText = results.length;
 
+    // Tableau
     const tbody = document.getElementById("tbody");
 
     tbody.innerHTML = "";
