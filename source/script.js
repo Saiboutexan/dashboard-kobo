@@ -2,9 +2,6 @@ alert("NOUVEAU SCRIPT CHARGÉ");
 
 const FORM_URL = "https://script.google.com/macros/s/AKfycbxJKVbECtzabq5SwQAq0I3lIGhPOOmYCszsr6KTFBDTHwFcepHe0jBORgQ-UZZ8LE8jzA/exec";
 
-// Variable pour suivre le nombre précédent
-let ancienTotal = 0;
-
 async function chargerDonnees() {
 
   try {
@@ -33,19 +30,6 @@ async function chargerDonnees() {
     // TABLEAU
     const tbody = document.getElementById("tbody");
 
-    // Vérifie si nouvelles données
-    if(results.length === ancienTotal) {
-
-      console.log("Aucune nouvelle donnée");
-
-      return;
-
-    }
-
-    // Mise à jour du total précédent
-    ancienTotal = results.length;
-
-    // Vide le tableau
     tbody.innerHTML = "";
 
     // Aucune donnée
@@ -75,8 +59,6 @@ async function chargerDonnees() {
 
     });
 
-    console.log("Tableau mis à jour");
-
   } catch(error) {
 
     console.error("Erreur :", error);
@@ -93,14 +75,5 @@ async function chargerDonnees() {
 
 }
 
-// LANCEMENT INITIAL
-chargerDonnees();
-
-// SYNCHRONISATION TEMPS RÉEL
-setInterval(() => {
-
-  console.log("Actualisation automatique...");
-
-  chargerDonnees();
-
-}, 5000);
+// LANCEMENT
+chargerDonnees();s
