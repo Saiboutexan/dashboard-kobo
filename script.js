@@ -12,23 +12,25 @@ async function chargerDonnees() {
 
     const results = data.results || [];
 
-    // Total
+    // TOTAL
     document.getElementById("total").innerText = results.length;
 
-    // Tableau
+    // TABLEAU
     const tbody = document.getElementById("tbody");
 
     tbody.innerHTML = "";
 
     results.forEach(item => {
 
-      tbody.innerHTML += `
+      const row = `
         <tr>
           <td>${item.Id || ""}</td>
           <td>${item.Nom || ""}</td>
           <td>${item.Pr_nom || ""}</td>
         </tr>
       `;
+
+      tbody.innerHTML += row;
 
     });
 
