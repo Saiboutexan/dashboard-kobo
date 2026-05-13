@@ -10,9 +10,13 @@ async function chargerDonnees() {
 
     const response = await fetch(FORM_URL);
 
+    alert("Fetch OK");
+
     console.log("Response :", response);
 
     const data = await response.json();
+
+    alert(JSON.stringify(data));
 
     console.log("DATA :", data);
 
