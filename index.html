@@ -1,17 +1,46 @@
-<table border="1" width="100%">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Noms</th>
-      <th>Prénom</th>
-    </tr>
-  </thead>
+<!DOCTYPE html>
+<html lang="fr">
 
-  <tbody id="tbody">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard KoboToolbox</title>
 
-    <tr>
-      <td colspan="3">Chargement des données...</td>
-    </tr>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  </tbody>
-</table>
+<body>
+
+  <div class="container">
+
+    <h1>Dashboard KoboToolbox</h1>
+
+    <div class="card">
+      <h2>Total Soumissions</h2>
+      <p id="total">0</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Noms</th>
+          <th>Prénom</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody">
+        <tr>
+          <td colspan="3">Chargement des données...</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- Anti cache GitHub Pages -->
+  <script src="script.js?v=999"></script>
+
+</body>
+
+</html>

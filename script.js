@@ -10,13 +10,13 @@ async function chargerDonnees() {
 
     const response = await fetch(FORM_URL);
 
-    alert("Fetch OK");
-
     console.log("Response :", response);
 
-    const data = await response.json();
+    if (!response.ok) {
+      throw new Error("Erreur API : " + response.status);
+    }
 
-    alert(JSON.stringify(data));
+    const data = await response.json();
 
     console.log("DATA :", data);
 
@@ -32,7 +32,7 @@ async function chargerDonnees() {
 
     tbody.innerHTML = "";
 
-    // Si aucune donnée
+    // Aucune donnée
     if(results.length === 0) {
 
       tbody.innerHTML = `
@@ -42,10 +42,9 @@ async function chargerDonnees() {
       `;
 
       return;
-
     }
 
-    // Ajout des lignes
+    // AFFICHAGE DES DONNÉES
     results.forEach(item => {
 
       const row = `
@@ -64,11 +63,17 @@ async function chargerDonnees() {
 
     console.error("Erreur :", error);
 
-    alert("Erreur : " + error.message);
+    document.getElementById("tbody").innerHTML = `
+      <tr>
+        <td colspan="3">
+          Erreur : ${error.message}
+        </td>
+      </tr>
+    `;
 
   }
 
 }
 
-// Lancement
-chargerDonnees();
+// LANCEMENT
+chargerDonnees();s
