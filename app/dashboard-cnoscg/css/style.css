@@ -1,0 +1,282 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Outfit', Arial, sans-serif;
+  background:#f4f7fb;
+  color:#222;
+  line-height:1.5;
+}
+
+/* ===================================== */
+/* HEADER */
+/* ===================================== */
+
+.header{
+  background:#0f172a;
+  color:white;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.header h1{
+  font-size:28px;
+  font-weight:700;
+}
+
+.header p{
+  opacity:0.8;
+  margin-top:5px;
+}
+
+.live-box{
+  background:red;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:bold;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{
+    opacity:0.4;
+  }
+}
+
+/* ===================================== */
+/* KPI */
+/* ===================================== */
+
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+.kpi{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.kpi:hover{
+  transform:translateY(-5px);
+}
+
+.kpi::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:6px;
+  height:100%;
+  background:#2563eb;
+}
+
+.kpi.green::before{
+  background:#10b981;
+}
+
+.kpi.red::before{
+  background:#ef4444;
+}
+
+.kpi.blue::before{
+  background:#3b82f6;
+}
+
+.kpi.purple::before{
+  background:#8b5cf6;
+}
+
+.kpi.pink::before{
+  background:#ec4899;
+}
+
+.kpi-icon{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.kpi-label{
+  font-size:15px;
+  color:#6b7280;
+  margin-bottom:10px;
+}
+
+.kpi-value{
+  font-size:34px;
+  font-weight:800;
+  color:#111827;
+}
+
+/* ===================================== */
+/* API */
+/* ===================================== */
+
+.api-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  padding:20px;
+  flex-wrap:wrap;
+}
+
+.api-actions{
+  display:flex;
+  gap:10px;
+}
+
+.api-box button{
+  padding:12px 18px;
+  border:none;
+  background:#2563eb;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.api-box button:hover{
+  background:#1d4ed8;
+}
+
+/* ===================================== */
+/* CARD */
+/* ===================================== */
+
+.card{
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.card-title{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:#0f172a;
+}
+
+/* ===================================== */
+/* MAP */
+/* ===================================== */
+
+#map{
+  height:500px;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+/* ===================================== */
+/* CHARTS */
+/* ===================================== */
+
+.charts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+canvas{
+  max-height:350px;
+}
+
+/* ===================================== */
+/* TABLE */
+/* ===================================== */
+
+.live-table{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  background:#f3f4f6;
+  color:#111827;
+  text-align:left;
+  font-size:14px;
+}
+
+th,
+td{
+  padding:14px;
+  border-bottom:1px solid #e5e7eb;
+}
+
+tr:hover{
+  background:#f9fafb;
+}
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#6b7280;
+  font-size:14px;
+}
+
+/* ===================================== */
+/* TV MODE */
+/* ===================================== */
+
+.tv-mode{
+  background:black;
+  color:white;
+}
+
+.tv-mode .card,
+.tv-mode .kpi{
+  background:#111827;
+  color:white;
+}
+
+.tv-mode th{
+  background:#1f2937;
+  color:white;
+}
+
+.tv-mode td{
+  border-color:#374151;
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+
+@media(max-width:768px){
+
+  .header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .charts-grid{
+    grid-template-columns:1fr;
+  }
+
+}

@@ -1,55 +1,36 @@
-alert("NOUVEAU SCRIPT CHARGÉ");
+alert("SCRIPT MIS À JOUR");
 
-const FORM_URL = "https://script.google.com/macros/s/AKfycbxJKVbECtzabq5SwQAq0I3lIGhPOOmYCszsr6KTFBDTHwFcepHe0jBORgQ-UZZ8LE8jzA/exec";
-
-// Variable pour suivre le nombre précédent
-let ancienTotal = 0;
+const FORM_URL =
+  "https://script.google.com/macros/s/AKfycbzhX33qWAo8Y1MvYMbM3VA6N5Ak8SOLqraRfDCyU1xCZKb0IHEvEVXgyik7MQheEEXUAQ/exec";
 
 async function chargerDonnees() {
 
+  const tbody = document.getElementById("tbody");
+  const total = document.getElementById("total");
+
   try {
 
-    console.log("Chargement des données...");
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3">Chargement...</td>
+      </tr>
+    `;
 
     const response = await fetch(FORM_URL);
-
-    console.log("Response :", response);
 
     if (!response.ok) {
       throw new Error("Erreur API : " + response.status);
     }
 
-    const data = await response.json();
+    const results = await response.json();
 
-    console.log("DATA :", data);
+    console.log(results);
 
-    const results = data.results || [];
+    total.innerText = results.length;
 
-    console.log("RESULTS :", results);
-
-    // TOTAL
-    document.getElementById("total").innerText = results.length;
-
-    // TABLEAU
-    const tbody = document.getElementById("tbody");
-
-    // Vérifie si nouvelles données
-    if(results.length === ancienTotal) {
-
-      console.log("Aucune nouvelle donnée");
-
-      return;
-
-    }
-
-    // Mise à jour du total précédent
-    ancienTotal = results.length;
-
-    // Vide le tableau
     tbody.innerHTML = "";
 
-    // Aucune donnée
-    if(results.length === 0) {
+    if (results.length === 0) {
 
       tbody.innerHTML = `
         <tr>
@@ -60,28 +41,23 @@ async function chargerDonnees() {
       return;
     }
 
-    // AFFICHAGE DES DONNÉES
-    results.forEach(item => {
+    results.forEach((item) => {
 
-      const row = `
+      tbody.innerHTML += `
         <tr>
-          <td>${item.Id || ""}</td>
-          <td>${item.Nom || ""}</td>
+          <td>${item.ID || ""}</td>
+          <td>${item.NOM || ""}</td>
           <td>${item.Pr_nom || ""}</td>
         </tr>
       `;
 
-      tbody.innerHTML += row;
-
     });
-
-    console.log("Tableau mis à jour");
 
   } catch(error) {
 
-    console.error("Erreur :", error);
+    console.error(error);
 
-    document.getElementById("tbody").innerHTML = `
+    tbody.innerHTML = `
       <tr>
         <td colspan="3">
           Erreur : ${error.message}
@@ -93,14 +69,4 @@ async function chargerDonnees() {
 
 }
 
-// LANCEMENT INITIAL
 chargerDonnees();
-
-// SYNCHRONISATION TEMPS RÉEL
-setInterval(() => {
-
-  console.log("Actualisation automatique...");
-
-  chargerDonnees();
-
-}, 5000);
